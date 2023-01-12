@@ -4,7 +4,7 @@ terraform {
     organization = "22shop"
 
     workspaces {
-      name = "web-network-sdjo"
+      name = "web-dns-sdjo"
     }
   }
 }

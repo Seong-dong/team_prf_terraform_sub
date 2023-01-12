@@ -3,10 +3,6 @@ variable "vpc_id" {
     type = string
 }
 
-variable "vpc_name" {
-    description = "set vpc name"
-    type = string
-}
 // reference | https://github.com/davidcsi/terraform/blob/master/healthchecks/main.tf
 variable "subnet-az-list" {
     description = "Subnet available zone & cidr"

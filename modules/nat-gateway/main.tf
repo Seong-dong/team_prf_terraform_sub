@@ -11,7 +11,7 @@ resource "aws_nat_gateway" "example" {
   subnet_id     = var.subnet_id
 
   tags = {
-    Name = "gw NAT"
+    Name = "${var.nat_name}"
   }
 
   # To ensure proper ordering, it is recommended to add an explicit dependency

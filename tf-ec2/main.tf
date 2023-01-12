@@ -19,14 +19,14 @@ data "terraform_remote_state" "hq_vpc_id" {
     organization = "22shop"
 
     workspaces = {
-      name = "web-network-sdjo" # <-테라폼클라우드 네임
+      name = "web-network-sdjo"
     }
   }
 }
 locals {
   account_id = data.aws_caller_identity.this.account_id
-  vpc_id     = data.terraform_remote_state.hq_vpc_id.outputs.vpc_id
-  subnet     = data.terraform_remote_state.hq_vpc_id.outputs.private_subnet
+  vpc_id        = data.terraform_remote_state.hq_vpc_id.outputs.vpc_id
+  subnet = data.terraform_remote_state.hq_vpc_id.outputs.private_subnet
   common_tags = {
     project = "22shop"
     owner   = "icurfer"
@@ -34,12 +34,12 @@ locals {
   }
   tcp_port = {
     # any_port    = 0
-    http_port  = 80
-    https_port = 443
-    ssh_port   = 22
+    http_port   = 80
+    https_port  = 443
+    ssh_port    = 22
     # dns_port    = 53
     # django_port = 8000
-    mysql_port = 3306
+    mysql_port  = 3306
   }
   udp_port = {
     dns_port = 53
@@ -56,21 +56,21 @@ locals {
   }
 }
 module "ec2_bastion" {
-  source              = "../modules/ec2"
-  ami_name            = "ami-035233c9da2fabf52" //amazon linux
-  instance_type       = "t2.micro"
-  tag_name            = "web-ec2"
+  source = "../modules/ec2"
+  ami_name = "ami-035233c9da2fabf52" //amazon linux
+  instance_type = "t2.micro"
+  tag_name = "web-ec2"
   public_ip_associate = true
-  key_name            = "default-shop"
-  private_subnet      = data.terraform_remote_state.hq_vpc_id.outputs.private_subnet.zone-a.id
-  public_subnet       = data.terraform_remote_state.hq_vpc_id.outputs.public_subnet.zone-a.id
-  sg_list             = [module.ec2_sg.sg_id]
+  key_name = "default-shop"
+  private_subnet = data.terraform_remote_state.hq_vpc_id.outputs.private_subnet.zone-a.id
+  public_subnet = data.terraform_remote_state.hq_vpc_id.outputs.public_subnet.zone-a.id
+  sg_list = [module.ec2_sg.sg_id]
 }
 
 module "ec2_sg" {
   source  = "../modules/sg"
   sg_name = "${local.common_tags.project}-web-ec2-sg"
-  vpc_id  = local.vpc_id
+  vpc_id = local.vpc_id
 
 }
 module "ec2_sg_ingress_http" {

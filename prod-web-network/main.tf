@@ -20,6 +20,8 @@ locals {
     zone_c = "10.1.3.0/24"
     zone_a_private = "10.1.2.0/24"
     zone_c_private = "10.1.4.0/24"
+    zone_a_tgw = "10.1.5.0/24"
+    zone_c_tgw = "10.1.6.0/24"
   }
   tcp_port = {
     any_port    = 0
@@ -42,19 +44,6 @@ locals {
 
 // GET 계정정보
 data "aws_caller_identity" "this" {}
-
-// 테라폼클라우드
-# data "terraform_remote_state" "hq_vpc_id" {
-#   backend = "remote"
-
-#   config = {
-#     organization = "22shop"
-
-#     workspaces = {
-#       name = "web-network"
-#     }
-#   }
-# }
 
 //vpc 생성
 module "vpc_hq" {
@@ -94,12 +83,12 @@ module "subnet_public" {
     }
   }
   public_ip_on   = true
-  vpc_name = local.eks_ingress_type.private
 }
 // private외부통신을 위한 nat
 module "nat_gw" {
   source = "../modules/nat-gateway"
   subnet_id = module.subnet_public.subnet.zone-a.id
+  nat_name = "nat-gw_web"
 
   depends_on = [
     module.vpc_igw
@@ -109,7 +98,7 @@ module "nat_gw" {
 // public route
 module "route_public" {
   source   = "../modules/route-table"
-  tag_name = "${local.common_tags.project}-route_table"
+  tag_name = "${local.common_tags.project}-public_tbl-sdjo"
   vpc_id   = module.vpc_hq.vpc_hq_id
 
 }
@@ -146,16 +135,12 @@ module "subnet_private" {
     }
   }
   public_ip_on   = false
-  # vpc_name       = "${local.common_tags.project}-public"
-  #alb-ingress 생성을 위해 지정
-  k8s_ingress        = false
-  vpc_name = "null"
 }
 
 // private route
 module "route_private" {
   source   = "../modules/route-table"
-  tag_name = "${local.common_tags.project}-private_tbl"
+  tag_name = "${local.common_tags.project}-private_tbl-sdjo"
   vpc_id   = module.vpc_hq.vpc_hq_id
 
 }
@@ -171,4 +156,39 @@ module "route_association_nat" {
 
   association_count = 2
   subnet_ids        = [module.subnet_private.subnet.zone-a.id, module.subnet_private.subnet.zone-c.id]
+}
+
+#----------------------------------------------------------------------------------------------------#
+######################################################################################################
+#----------------------------------------------------------------------------------------------------#
+//tgw-subnet
+module "subnet_private_tgw" {
+  source = "../modules/vpc-subnet"
+
+  vpc_id         = module.vpc_hq.vpc_hq_id
+  subnet-az-list = {
+    "zone-a" = {
+      name = "${local.region}a"
+      cidr = local.cidr.zone_a_tgw
+    }
+    "zone-c" = {
+      name = "${local.region}c"
+      cidr = local.cidr.zone_c_tgw
+    }
+  }
+  public_ip_on   = false
+}
+// private route
+module "route_private_tgw" {
+  source   = "../modules/route-table"
+  tag_name = "${local.common_tags.project}-private_tbl_tgw-sdjo"
+  vpc_id   = module.vpc_hq.vpc_hq_id
+
+}
+module "route_association_tgw" {
+  source         = "../modules/route-association"
+  route_table_id = module.route_private_tgw.route_id
+
+  association_count = 2
+  subnet_ids        = [module.subnet_private_tgw.subnet.zone-a.id, module.subnet_private_tgw.subnet.zone-c.id]
 }
