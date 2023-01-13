@@ -6,7 +6,7 @@ systemctl enable docker
 usermod -a -G docker ec2-user
 (
 echo "P@ssw0rd"
-echo "Pssw0rd"
+echo "P@ssw0rd"
 ) | passwd --stdin root
 sed -i "s/^PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
 sed -i "s/^#PermitRootLogin yes/PermitRootLogin yes/g" /etc/ssh/sshd_config
