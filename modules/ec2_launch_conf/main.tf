@@ -1,5 +1,5 @@
 resource "aws_launch_configuration" "as_conf" {
-    name          = "${var.cluster_name}-web-config"
+    # name          = "${var.cluster_name}-web-config"
     image_id      = var.ami_id
     instance_type = var.instance_type
     security_groups = var.sg_ids

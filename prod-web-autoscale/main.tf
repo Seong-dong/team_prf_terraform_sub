@@ -143,7 +143,7 @@ module "alb_sg_egress_all" {
 module "ec2_launch_conf" {
   source = "../modules/ec2_launch_conf"
 
-  cluster_name  = local.cluster_name
+  # cluster_name  = local.cluster_name
   ami_id        = local.ami_amazon
   instance_type = local.instance_type
   key_name      = local.key_name
