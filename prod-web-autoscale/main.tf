@@ -73,7 +73,7 @@ locals {
   ami_amazon    = "ami-0eddbd81024d3fbdd"
   ami_ununtu    = "ami-0d19691dd2d866cb6" #ubuntu v18.04
   cluster_name  = "web-asg"
-  instance_type = "t2.micro"
+  instance_type = "t3.medium"
 }
 
 # SG 생성
