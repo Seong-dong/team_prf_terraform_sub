@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dab28401-4ed4-44e9-aa56-f601a7dbc6ab" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/modules/alb/main.tf" beforeDir="false" afterPath="$PROJECT_DIR$/modules/alb/main.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/alb/outputs.tf" beforeDir="false" afterPath="$PROJECT_DIR$/modules/alb/outputs.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/alb/variables.tf" beforeDir="false" afterPath="$PROJECT_DIR$/modules/alb/variables.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/ec2-launch-conf/asg-user-data.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/ec2-launch-conf/cgw-data.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/ec2-launch-conf/main.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/ec2-launch-conf/outputs.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/ec2-launch-conf/user-data.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/ec2-launch-conf/vailables.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prod-web-autoscale/.terraform.lock.hcl" beforeDir="false" afterPath="$PROJECT_DIR$/prod-web-autoscale/.terraform.lock.hcl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prod-web-autoscale/main.tf" beforeDir="false" afterPath="$PROJECT_DIR$/prod-web-autoscale/main.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prod-web-ec2/.terraform.lock.hcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prod-web-ec2/main.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prod-web-ec2/outputs.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prod-web-ec2/terraform.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prod-web-ec2/vailables.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tf-ec2/main.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tf-ec2/outputs.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tf-ec2/terraform.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tf-ec2/vailables.tf" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2KVA1Eq06CY8sCO21Hh0xWk5glC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/github/icurfer-mariadb"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dab28401-4ed4-44e9-aa56-f601a7dbc6ab" name="Changes" comment="" />
+      <created>1674049159779</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674049159779</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

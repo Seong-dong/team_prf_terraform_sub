@@ -4,7 +4,7 @@ terraform {
     organization = "22shop"
 
     workspaces {
-      name = "web-ec2-sdjo"
+      name = "web-jenkins-sdjo"
     }
   }
 }

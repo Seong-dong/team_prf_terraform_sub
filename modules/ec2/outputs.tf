@@ -7,6 +7,10 @@ output "public_ip_associate" {
     value = aws_instance.ec2.associate_public_ip_address
   
 }
+output "public_ip" {
+    value = aws_instance.ec2.public_ip
+  
+}
 
 output "sg_id" {
     value = aws_network_interface.eni.security_groups
