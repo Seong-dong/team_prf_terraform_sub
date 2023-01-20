@@ -8,9 +8,7 @@ provider "aws" {
 
 }
 
-
 locals {
-  vpc_id = data.terraform_remote_state.hq_vpc_id.outputs.vpc_id
   common_tags = {
     project = "22shop"
     owner   = "icurfer"
@@ -40,18 +38,6 @@ data "aws_caller_identity" "this" {}
 locals {
   # dns_name = "777aws.ml"
   dns_name = "ddochi.me"
-}
-// 테라폼클라우드
-data "terraform_remote_state" "hq_vpc_id" {
-  backend = "remote"
-
-  config = {
-    organization = "22shop"
-
-    workspaces = {
-      name = "web-network-sdjo"
-    }
-  }
 }
 
 module "rote53" {
