@@ -83,7 +83,7 @@ module "ec2_sg_egress_all" {
 module "ec2_jenkins" {
   source              = "../modules/ec2"
   # ami_name            = "ami-035233c9da2fabf52" //amazon linux
-  ami_name            = "ami-011b899b922bf2baa" //custom
+  ami_name            = "ami-02faeb2ec3ce916ce" //custom
   instance_type       = "t2.micro"
   tag_name            = "jenkins"
   public_ip_associate = true

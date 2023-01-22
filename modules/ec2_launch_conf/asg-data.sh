@@ -6,7 +6,7 @@ echo "p@ssw0rd"
 sed -i "s/^PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
 sed -i "s/^#PermitRootLogin yes/PermitRootLogin yes/g" /etc/ssh/sshd_config
 service sshd restart
-hostname asg-prod-update
+hostname asg-prod-setting
 amazon-linux-extras install docker -y
 systemctl enable --now docker
 usermod -a -G docker ec2-user
