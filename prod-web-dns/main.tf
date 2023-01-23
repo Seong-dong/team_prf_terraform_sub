@@ -35,6 +35,19 @@ locals {
 // GET 계정정보
 data "aws_caller_identity" "this" {}
 
+// 테라폼클라우드
+data "terraform_remote_state" "jenkins" {
+  backend = "remote"
+
+  config = {
+    organization = "22shop"
+
+    workspaces = {
+      name = "web-jenkins-sdjo"
+    }
+  }
+}
+
 locals {
   # dns_name = "777aws.ml"
   dns_name = "ddochi.me"
@@ -45,14 +58,10 @@ module "rote53" {
   name   = local.dns_name
 }
 
-# resource "aws_route53_record" "www" {
-#   zone_id = module.rote53.zone_id
-#   name    = "hq.ddochi.ml"
-#   type    = "A"
-
-#   alias {
-#     name                   = "k8s-22shopekscluster-42f56c4a0b-158144463.ap-northeast-2.elb.amazonaws.com"
-#     zone_id                = "ZWKZPGTI48KDX"
-#     evaluate_target_health = true
-#   }
-# }
+resource "aws_route53_record" "www" {
+  zone_id = module.rote53.zone_id
+  name    = "jenkins.ddochi.me"
+  type    = "A"
+  ttl = 300
+  records = ["${data.terraform_remote_state.jenkins.outputs.public_ip}"]
+}
